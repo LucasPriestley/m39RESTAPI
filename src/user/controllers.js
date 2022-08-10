@@ -6,7 +6,7 @@ exports.createUser = async (req, res) => {
     const newUser = await User.create(req.body);
     const token = await jwt.sign({ _id: newUser._id }, process.env.SECRET); //create token with user._id inside
     //generate token using newUser._id
-    res.send({ msg: "This came from createUser", token }); //send success message and token back in the response
+    res.send({ newUser }); //send success message and token back in the response
   } catch (error) {
     console.log(error);
     res.send({ err: error });
